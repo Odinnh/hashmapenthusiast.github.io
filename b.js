@@ -15,7 +15,7 @@ const playSound = () => {
     originalAudio.onended = () => {
         this.remove()
     }
-    darkmode.parentNode.insertBefore(audioButton, darkmode.nextSibling.nextSibling);
+    coloured.parentNode.insertBefore(audioButton, coloured.nextSibling.nextSibling);
     document.body.appendChild(originalAudio)
 }
 

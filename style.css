@@ -1,0 +1,106 @@
+:root{
+    --brightness:0;
+    --koiwa-is-shit:500px;
+}
+
+body{
+    background:var(--stone-11);
+    accent-color:var(--yellow-6);
+}
+input{
+    background:var(--stone-12);
+}
+input[type="checkbox"]{
+    accent-color: var(--stone-12);
+    border:1px solid var(--stone-12)!important;
+}
+input[type="number"]:focus-within {
+    outline-color: var(--yellow-6);
+}
+img {
+    position: absolute;
+
+    left: 150px;
+}
+h1{
+    font-size:var(--size-7);
+}
+h2{
+    font-size:var(--size-6);
+
+}
+h3{ 
+    font-size:var(--size-5);
+    margin-bottom:var(--size-5);
+
+}
+img{
+    pointer-events: none;
+}
+fieldset{
+    border-top: unset;
+    border-left: unset;
+    border-right: unset;
+    border-radius: unset;
+}
+button{
+    background-color:var(--stone-12);
+    padding: var(--size-1) var(--size-2);
+    border-radius: var(--size-1);
+}
+button:hover, button:focus-within{
+    color:var(--yellow-6);
+    border-bottom: 1px solid var(--gray-12);
+    transform: translateY(-1px);
+    margin-bottom:-1px;
+}
+
+button:active{
+    border-top: 1px solid var(--sand-12);
+    background:var(--gray-12);
+    border-bottom:unset;
+    transform: translateY(2px);
+    margin-bottom:-1px;
+    margin-top:-1px;
+    padding-bottom:calc(var(--size-1) - 2px);
+}
+#img1 {
+    --i1: 0deg;
+    --sat1: 10000%;
+    --hue1: 0deg;
+    filter: brightness(var(--brightness)) sepia(100%) saturate(var(--sat1)) hue-rotate(var(--hue1));
+    transform: rotate(var(--i1));
+}
+
+#img2 {
+    --i2: 0deg;
+    --sat2: 10000%;
+    --hue2: 0deg;
+    --b2: min(var(--brightness), 0.5);
+    filter: brightness(var(--b2)) sepia(100%) saturate(var(--sat2)) hue-rotate(var(--hue2));
+    transform: rotate(var(--i2));
+}
+
+#img3 {
+    --i3: 0deg;
+    --sat3: 10000%;
+    --hue3: 215deg;
+    filter: brightness(var(--brightness)) sepia(100%) saturate(var(--sat3)) hue-rotate(var(--hue3));
+    transform: rotate(var(--i3));
+}
+
+#img4 {
+    --i4: 0deg;
+    --sat4: 0%;
+    --hue4: 0deg;
+    filter: brightness(0) sepia(100%) saturate(var(--sat4)) hue-rotate(var(--hue4));
+    transform: rotate(var(--i4));
+
+}
+
+#HURRICANEHOLDER {
+    height: 1000px
+}
+#coloured{
+    margin-right:5px;
+}
