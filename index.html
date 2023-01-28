@@ -3,6 +3,7 @@
 <!-- 
     idea by ScamperNZ
     programmed by broomholder
+    stolen by Odinn
  -->
 <html>
 
@@ -53,10 +54,12 @@
     </h2>
     <div>
         <!-- <button id="playbackwards">Play Backwards</button> -->
+
         <button id="pause">Pause</button>
         <button id="playforwards">Play Forwards</button>
         Degrees to rotate: <input type="number" id="increment" min="1" max="359" step="1" placeholder="1">
-        Delay (in milliseconds 1-10000): <input type="number" id="delay" min="1" max="10000" step="0.1" placeholder="200">
+        Delay (in milliseconds 1-10000): <input type="number" id="delay" min="1" max="10000" step="0.1"
+            placeholder="200">
         <input type="checkbox" id="coloured">coloured
         <input type="checkbox" id="darkmode">DARKMODE
         <fieldset>
@@ -90,7 +93,10 @@
         <img src="" alt="" id="img3">
         <img src="" alt="" id="img4">
     </div>
-    <script>
+    <script type="module">
+        let debug = false
+        import d from './b.js'
+        let clockwise
         const CLU1B = 'https://cdn.discordapp.com/attachments/1026379861549400155/1026381086147747870/Clue1.png';
         const CLU2B = 'https://cdn.discordapp.com/attachments/1026379861549400155/1026381087041126480/Clue2.png';
         const CLU3B = 'https://cdn.discordapp.com/attachments/1026379861549400155/1026381087833849866/Clue3.png';
@@ -133,6 +139,7 @@
         const i310 = document.querySelector('#i310');
         const i410 = document.querySelector('#i410');
 
+
         darkmode.addEventListener('change', () => {
             if (darkmode.checked) {
                 document.body.style.setProperty('background-color', 'black')
@@ -153,8 +160,10 @@
 
         const rotatePicture = (e) => {
             //what triggered
-            console.log(e.target);
-            console.log(e.target.name);
+            if (debug) {
+                console.log(e.target)
+                console.log(e.target.name)
+            }
             const img = document.querySelector('#img' + e.target.id[1])
             const range = document.querySelector('#i' + e.target.id[1] + 'r')
             const number = document.querySelector('#i' + e.target.id[1] + 'n')
@@ -168,6 +177,8 @@
             img.style.setProperty(css_variable, new_angle)
             range.value = e.target.value
             number.value = e.target.value
+
+            d()
         }
 
         i1r.addEventListener('change', (e) => rotatePicture(e))
@@ -204,38 +215,41 @@
             i2n.value = next2
             i3r.value = next3
             i3n.value = next3
-            next1 = "" + next1 + "deg";
-            next2 = "" + next2 + "deg";
-            next3 = "" + next3 + "deg";
-            console.log("next1: ", next1);
-            console.log("next2: ", next2);
-            console.log("next3: ", next3);
+            next1 = "" + next1 + "deg"
+            next2 = "" + next2 + "deg"
+            next3 = "" + next3 + "deg"
+            if (debug) {
+                console.log("next1: ", next1)
+                console.log("next2: ", next2)
+                console.log("next3: ", next3)
+            }
+            d()
             image1.style.setProperty("--i1", next1)
             image2.style.setProperty("--i2", next2)
             image3.style.setProperty("--i3", next3)
         }
 
 
-        let frame = Number(delay.value) || 200;
+        let frame = Number(delay.value) || 200
 
         let on = false
 
         const start = (inc) => {
             if (!on) {
-                frame = Number(delay.value) || 200;
-                clockwise = setInterval(play, frame);
+                frame = Number(delay.value) || 200
+                clockwise = setInterval(play, frame)
                 on = true;
             } else {
                 stop()
                 frame = Number(delay.value) || 200;
-                clockwise = setInterval(play, frame);
+                clockwise = setInterval(play, frame)
                 on = true;
             }
         }
 
 
         const stop = () => {
-            clearInterval(clockwise);
+            clearInterval(clockwise)
             on = false;
         }
         const onOff = (e) => {
@@ -255,20 +269,21 @@
         i310.addEventListener('change', (e) => onOff(e))
         i410.addEventListener('change', (e) => onOff(e))
 
-        forwards.addEventListener("click", start);
-        pause.addEventListener("click", stop);
+        forwards.addEventListener("click", start)
+        pause.addEventListener("click", stop)
         coloured.addEventListener("change", () => {
-            console.log(coloured.checked);
+            if (debug) console.log(coloured.checked)
             if (coloured.checked) {
-                image1.src = CLU1C;
-                image2.src = CLU2C;
-                image3.src = CLU3C;
+                image1.src = CLU1C
+                image2.src = CLU2C
+                image3.src = CLU3C
             } else {
-                image1.src = CLU1B;
-                image2.src = CLU2B;
-                image3.src = CLU3B;
+                image1.src = CLU1B
+                image2.src = CLU2B
+                image3.src = CLU3B
             }
         })
+
     </script>
 </body>
 
